@@ -18,12 +18,12 @@
 
 						<img src={{ post.image.url }} alt=""><br/>
 						<a href="{% url 'appreview:update_ticket' post.id %}">MODIFIER</a>
-						<a href="">SUPPRIMER</a>
+						<a href="{% url 'appreview:delete_ticket' post.id %}">SUPPRIMER</a>
 					{% elif post|model_type == "Review" %}
 						<p>Vous avez publié une critique <br/></p>
 						<p>{{ post.time_created }}<br/></p>
 						<h2>{{ post.headline }} - {{ post.rating }}<br/></h2>
-						<p>{{ post.description|default:"Pas de description" }}<br/></p>
+						<p>{{ post.body|default:"Pas de description" }}<br/></p>
 
 						<div class="ticket_of_review">
 							<p>Ticket de {% get_poster_display post.ticket.user %}<br/></p>
@@ -32,7 +32,7 @@
 							<img src={{ post.ticket.image.url }} alt="">
 						</div>
 						<a href="{% url 'appreview:update_review' post.id %}">MODIFIER</a>
-						<a href="">SUPPRIMER</a>
+						<a href="{% url 'appreview:delete_review' post.id %}">SUPPRIMER</a>
 					{% endif %}
 
 

@@ -60,7 +60,8 @@ def create_review_existing_ticket(request, ticket_id):
         "ticket": ticket,
         "review_form": review_form,
     }
-    return render(request, "appreview/create-review-existing-ticket.html", context=context)
+    return render(request, "appreview/create-review-existing-ticket.html",
+                  context=context)
 
 
 @login_required
@@ -105,6 +106,30 @@ def update_ticket(request, ticket_id):
 
 
 @login_required
+def delete_ticket(request, ticket_id):
+    ticket = get_object_or_404(Ticket, id=ticket_id)
+    if request.method == "POST":
+        ticket.delete()
+        return redirect("appreview:my_posts")
+    context = {
+        "ticket": ticket,
+    }
+    return render(request, "appreview/delete-ticket.html", context=context)
+
+
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if request.method == "POST":
+        review.delete()
+        return redirect("appreview:my_posts")
+    context = {
+        "review": review,
+    }
+    return render(request, "appreview/delete-review.html", context=context)
+
+
+@login_required
 def review_update(request, review_id):
     review = get_object_or_404(Review, id=review_id)
     edit_form = ReviewForm(instance=review)
@@ -143,4 +168,3 @@ def followers(request):
         "form": form,
     }
     return render(request, "appreview/followers.html", context=context)
-

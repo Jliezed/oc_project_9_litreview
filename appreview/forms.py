@@ -9,7 +9,6 @@ class TicketForm(forms.ModelForm):
         # fields = '__all__'
         exclude = ('user',)
 
-
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
