@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+{% load static %}
+
+
+<div class="login-register-block">
+	<div class="img-log-register"><img src="{% static 'images/women-book.png' %}"></div>
+	<div class="action">
+		<div class="register">
+			<h1>Inscrivez-vous</h1>
+			<button><a href="{% url 'user:register' %}">S'inscrire</a></button>
+		</div>
+		<div class="log">
+			<h1>Connectez-vous</h1>
+			{% if form.errors %}
+			<p>Identifiant ou mot de passe invalide</p>
+			{% endif %}
+			
+			{% if next %}
+			{% if user.is_authenticated %}
+			<p>Your account doesn't have access to this page. To proceed,
+				please login with an account that has access.</p>
+			{% else %}
+			<p>Please login to see this page.</p>
+			{% endif %}
+			{% endif %}
+			
+			<form method="post" action="{% url 'login' %}">
+				{% csrf_token %}
+				<table>
+					<tr>
+						<td>{{ form.username.label_tag }}</td>
+						<td>{{ form.username }}</td>
+					</tr>
+					<tr>
+						<td>{{ form.password.label_tag }}</td>
+						<td>{{ form.password }}</td>
+					</tr>
+				</table>
+				<input type="submit" value="Se connecter">
+				<input type="hidden" name="next" value="{{ next }}">
+			</form>
+			
+			<a href="{% url 'password_reset' %}">Mot de passe oublié ?</a>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

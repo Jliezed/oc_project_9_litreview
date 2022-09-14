@@ -1,0 +1,8 @@
+
+
+.review-existing-ticket {
+  @include section;
+  & .post {
+    @include post-background;
+  }
+}

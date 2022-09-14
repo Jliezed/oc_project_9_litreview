@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load appreview_extras %}
+
+
+{% block content %}
+	<section class="my-posts">
+		<div class="box">
+			<h2> MES POSTS</h2>
+
+			{% for post in tickets_and_reviews %}
+				<div class="content">
+
+					{% if post|model_type == "Ticket" %}
+						<p>Vous avez publié un ticket <br/></p>
+						<p>{{ post.time_created }}<br/></p>
+						<h2>{{ post.title }}<br/></h2>
+						<p>{{ post.description }}<br/></p>
+
+						<img src={{ post.image.url }} alt=""><br/>
+						<a href="{% url 'appreview:update_ticket' post.id %}">MODIFIER</a>
+						<a href="">SUPPRIMER</a>
+					{% elif post|model_type == "Review" %}
+						<p>Vous avez publié une critique <br/></p>
+						<p>{{ post.time_created }}<br/></p>
+						<h2>{{ post.headline }} - {{ post.rating }}<br/></h2>
+						<p>{{ post.description|default:"Pas de description" }}<br/></p>
+
+						<div class="ticket_of_review">
+							<p>Ticket de {% get_poster_display post.ticket.user %}<br/></p>
+							<h2>{{ post.ticket.title }}<br/></h2>
+
+							<img src={{ post.ticket.image.url }} alt="">
+						</div>
+						<a href="{% url 'appreview:update_review' post.id %}">MODIFIER</a>
+						<a href="">SUPPRIMER</a>
+					{% endif %}
+
+
+				</div>
+			{% endfor %}
+		</div>
+
+	</section>
+
+{% endblock content %}

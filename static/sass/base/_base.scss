@@ -1,0 +1,18 @@
+@import "../abstracts/variables";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Gentium Book Basic', serif, 'Roboto Condensed', 'Montserrat', 'Roboto', 'Titillium Web', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: #f4f1de;
+}
+
+a {
+  text-decoration: none;
+}
+

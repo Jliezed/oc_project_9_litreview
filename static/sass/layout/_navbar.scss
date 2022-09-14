@@ -1,0 +1,32 @@
+/* ----- NAVBAR ----- */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  background-color: darken($colour-primary, 5%);
+
+  & .logo {
+    flex-grow: 1;
+    margin: 5%;
+
+    & a {
+      color: white;
+      font-size: xx-large;
+    }
+  }
+
+  & .nav-login {
+    flex-grow: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    & a {
+      margin: 0 3%;
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

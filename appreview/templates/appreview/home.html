@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	{% if user.is_authenticated %}
+
+		<section class="home">
+			<div class="action-buttons">
+				<a href="{% url 'appreview:create_ticket' %}"> Demander une critique</a>
+				<a href="{% url 'appreview:create_review' %}"> Créer une critique</a>
+			</div>
+			<div class="feed">
+				{% for ticket in tickets %}
+					<div class="post">
+						<div class="top">
+							<p>{{ ticket.user }} a demandé une critique<br/></p>
+							<h2>{{ ticket.title }}<br/></h2>
+							<p>{{ ticket.time_created }}<br/></p>
+							<p>{{ ticket.description }}<br/></p>
+						</div>
+						<div class="bottom">
+							{% if ticket.image %}
+								<img src="{{ ticket.image.url }}">
+							{% endif %}
+							<a href="{% url 'appreview:create_review_ticket' ticket.id %}">Créer une critique</a>
+						</div>
+					</div>
+					<br/>
+				{% endfor %}
+
+
+			</div>
+			{% for review in reviews %}
+				{{ review.headline }} <br/>
+				{{ review.rating }}<br/>
+				{{ review.ticket }}<br/>
+				{{ review.ticket.description }}<br/><br/>
+			{% endfor %}
+		</section>
+
+	{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+@import "../components/buttons";
+@import "../components/background";
+
+/* ----- HOMEPAGE ----- */
+section.home {
+  @include section;
+  display: flex;
+  flex-direction: column;
+
+  & .action-buttons {
+    display: flex;
+    justify-content: center;
+
+    & a {
+      @include a-button;
+    }
+  }
+
+  & .feed {
+    display: flex;
+    flex-direction: column;
+
+    & .post {
+      @include post-background;
+      display: flex;
+      flex-direction: column;
+
+      & .bottom {
+        height: 300px;
+        display: flex;
+        & img {
+          flex-basis: 70%;
+          object-fit: contain;
+        }
+        & a {
+          flex-basis: 30%;
+          align-self: flex-end;
+          @include a-button;
+        }
+      }
+
+    }
+  }
+
+}

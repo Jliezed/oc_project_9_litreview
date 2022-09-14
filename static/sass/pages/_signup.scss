@@ -1,0 +1,16 @@
+/* ----- SIGNUP ----- */
+.signup-form {
+  margin: 2% 5%;
+
+  & form {
+    & p {
+      & small {
+        display: none;
+      }
+    }
+    & ul {
+      display: none;
+    }
+  }
+
+}

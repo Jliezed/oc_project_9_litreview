@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+	<div>
+		<h1>FOLLOWERS</h1>
+	</div>
+
+	<div>
+		<h2>Suivre d'autres utilisateurs</h2>
+		<form method="post">
+			{{ form.as_p }}
+			{% csrf_token %}
+			<button type="submit">Confirmer</button>
+		</form>
+
+		<h2>Abonnements</h2>
+
+		<h2>Abonnés</h2>
+	</div>
+
+
+{% endblock content %}

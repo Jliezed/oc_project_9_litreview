@@ -1,0 +1,16 @@
+/* ----- RESET PAGE ----- */
+.reset-password {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f2cc8f;
+    height: 50%;
+    width: 30%;
+  }
+}

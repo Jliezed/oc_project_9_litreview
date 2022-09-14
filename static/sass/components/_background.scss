@@ -1,0 +1,17 @@
+@mixin section {
+  margin: 5% 10%;
+}
+
+@mixin post-background {
+  margin: 1% 0;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #f2cc8f;
+}
+
+@mixin form-background {
+  margin: 1% 0;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #f2cc8f;
+}

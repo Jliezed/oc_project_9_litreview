@@ -1,0 +1,280 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Gentium Book Basic", serif, "Roboto Condensed", "Montserrat", "Roboto", "Titillium Web", sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: #f4f1de;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ----- NAVBAR ----- */
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  background-color: #dc684a;
+}
+.navbar .logo {
+  flex-grow: 1;
+  margin: 5%;
+}
+.navbar .logo a {
+  color: white;
+  font-size: xx-large;
+}
+.navbar .nav-login {
+  flex-grow: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.navbar .nav-login a {
+  margin: 0 3%;
+  text-decoration: none;
+  color: white;
+}
+
+/* ----- FOOTER ----- */
+footer div {
+  background-color: #3d405b;
+  color: white;
+  text-align: center;
+}
+footer div p {
+  padding: 3%;
+  margin: 0;
+}
+
+/* ----- HOMEPAGE ----- */
+section.home {
+  margin: 5% 10%;
+  display: flex;
+  flex-direction: column;
+}
+section.home .action-buttons {
+  display: flex;
+  justify-content: center;
+}
+section.home .action-buttons a {
+  width: 20%;
+  height: 10%;
+  text-align: center;
+  justify-content: center;
+  margin: 0 5%;
+  background-color: #e07a5f;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+}
+section.home .feed {
+  display: flex;
+  flex-direction: column;
+}
+section.home .feed .post {
+  margin: 1% 0;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #f2cc8f;
+  display: flex;
+  flex-direction: column;
+}
+section.home .feed .post .bottom {
+  height: 300px;
+  display: flex;
+}
+section.home .feed .post .bottom img {
+  flex-basis: 70%;
+  object-fit: contain;
+}
+section.home .feed .post .bottom a {
+  flex-basis: 30%;
+  align-self: flex-end;
+  width: 20%;
+  height: 10%;
+  text-align: center;
+  justify-content: center;
+  margin: 0 5%;
+  background-color: #e07a5f;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+}
+
+/* ----- LOGIN PAGE ----- */
+.login-register-block {
+  display: flex;
+  flex-direction: row;
+  height: 80vh;
+}
+.login-register-block .img-log-register {
+  flex-grow: 1;
+  background-color: #f4f1de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-register-block .img-log-register img {
+  margin-left: 2%;
+  z-index: 0;
+  height: 60%;
+}
+.login-register-block .action {
+  background-color: #f4f1de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+.login-register-block .action .register {
+  margin: 5%;
+  width: 80%;
+  height: 20vh;
+  background-color: #f2cc8f;
+  border-radius: 10px;
+  box-shadow: 7px 5px 5px grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  opacity: 0.97;
+}
+.login-register-block .action .register button {
+  width: 80%;
+  height: 20%;
+  background-color: #e07a5f;
+  border: none;
+  border-radius: 10px;
+}
+.login-register-block .action .register button a {
+  color: white;
+}
+.login-register-block .action .log {
+  width: 80%;
+  height: 40vh;
+  margin: 2%;
+  background-color: #f2cc8f;
+  opacity: 0.97;
+  border-radius: 10px;
+  box-shadow: 7px 5px 5px grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.login-register-block .action .log form {
+  width: 80%;
+  margin: 5% 0;
+}
+.login-register-block .action .log form input[type=submit] {
+  width: 100%;
+  height: 30%;
+  background-color: #e07a5f;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  margin: 5% 0;
+}
+.login-register-block .action .log form input[type=text] {
+  width: 100%;
+  height: 50%;
+  border: none;
+  border-radius: 10px;
+}
+.login-register-block .action .log form input[type=password] {
+  width: 100%;
+  height: 50%;
+  border: none;
+  border-radius: 10px;
+}
+
+/* ----- RESET PAGE ----- */
+.reset-password {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.reset-password form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f2cc8f;
+  height: 50%;
+  width: 30%;
+}
+
+/* ----- SIGNUP ----- */
+.signup-form {
+  margin: 2% 5%;
+}
+.signup-form form p small {
+  display: none;
+}
+.signup-form form ul {
+  display: none;
+}
+
+/* ----- CREATE TICKET PAGE ----- */
+.form-create-ticket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: #f2cc8f;
+  border-radius: 10px;
+  margin: 5% auto;
+}
+.form-create-ticket form {
+  margin: 3% 0;
+}
+.form-create-ticket form .item {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-review {
+  margin: 5% 10%;
+}
+.create-review .form-create-ticket {
+  width: 100%;
+}
+
+.review-existing-ticket {
+  margin: 5% 10%;
+}
+.review-existing-ticket .post {
+  margin: 1% 0;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: #f2cc8f;
+}
+
+section.my-posts {
+  margin: 5% 10%;
+  display: flex;
+  flex-direction: column;
+}
+section.my-posts .content {
+  background-color: #f2cc8f;
+  border-radius: 20px;
+  padding: 2% 5%;
+  margin: 2% 0;
+}
+section.my-posts .content .ticket_of_review {
+  border: 1px solid #f4f1de;
+  border-radius: 10px;
+  padding: 2%;
+}
+
+/*# sourceMappingURL=main.css.map */

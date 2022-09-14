@@ -1,0 +1,18 @@
+section.my-posts {
+  @include section;
+  display: flex;
+  flex-direction: column;
+
+  & .content {
+    background-color: $background;
+    border-radius: 20px;
+    padding: 2% 5%;
+    margin: 2% 0;
+
+    & .ticket_of_review {
+      border: 1px solid $background-secondary;
+      border-radius: 10px;
+      padding: 2%;
+    }
+  }
+}

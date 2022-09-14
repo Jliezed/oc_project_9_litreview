@@ -1,0 +1,17 @@
+<nav class="navbar burger-menu">
+	{% if user.is_authenticated %}
+		<div class="logo">
+			<a href="{% url 'appreview:home' %}">LITReview</a>
+		</div>
+		<div class="nav-login">
+			<a href="{% url 'appreview:home' %}"> Flux </a>
+			<a href="{% url 'appreview:my_posts' %}"> Posts </a>
+			<a href="{% url 'appreview:followers' %}"> Abonnements </a>
+			<a href="{% url 'logout' %}"> Se déconnecter </a>
+		</div>
+	{% else %}
+		<div class="logo">
+			<a href="{% url 'login' %}">LITReview</a>
+		</div>
+	{% endif %}
+</nav>
