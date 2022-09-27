@@ -4,29 +4,35 @@
 
 {% block content %}
 
-<!--{% if form.errors %}-->
-<!--	{{ form.errors }}-->
-<!--{% endif %}-->
-<div class="signup-form">
-	<h2>Inscrivez-vous</h2>
-	<form method="post">
-		{% csrf_token %}
-		{% for field in form %}
-		<p>
-			{{ field.label_tag }}<br>
-			{{ field }}
-			{% if field.help_text %}
-				<small>{{ field.help_text }}</small>
-			{% endif %}
-			{% for error in field.errors %}
-				<p>{{ error }}</p>
-			{% endfor %}
-		</p>
-		{% endfor %}
-		<a href="{% url 'appreview:home' %}">Retourner</a>
-		<button type="submit">S'inscrire</button>
-		
-	</form>
-</div>
+	<!--{% if form.errors %}-->
+		<!--	{{ form.errors }}-->
+		<!--{% endif %}-->
+
+	<section class="form">
+		<div class="form-box">
+			<h2>Inscrivez-vous</h2>
+			<form method="post">
+				{% csrf_token %}
+				{% for field in form %}
+					<div class="item">
+						{{ field.label_tag }}<br>
+						{{ field }}
+						{% if field.help_text %}
+							<small class="tooltiptext">{{ field.help_text }}</small>
+						{% endif %}
+
+						{% for error in field.errors %}
+							<p>{{ error }}</p>
+						{% endfor %}
+
+					</div>
+
+				{% endfor %}
+				<input type="submit" value="S'inscrire"><br/>
+				<a href="{% url 'appreview:home' %}">Retourner</a>
+			</form>
+		</div>
+	</section>
+
 
 {% endblock content %}

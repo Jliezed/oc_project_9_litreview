@@ -10,10 +10,10 @@ class Ticket(models.Model):
     title = models.CharField(max_length=128)
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField()
     time_created = models.DateTimeField(auto_now_add=True)
 
-    IMAGE_MAX_SIZE = (800, 800)
+    IMAGE_MAX_SIZE = (200, 200)
 
     def resize_image(self):
         image = Image.open(self.image)
@@ -53,7 +53,10 @@ class UserFollows(models.Model):
                                       on_delete=models.CASCADE,
                                       related_name="followed_by")
 
+    def __str__(self):
+        return self.user.username
+
     class Meta:
         # ensures we don't get multiple UserFollows instances
         # for unique user-user_followed pairs
-        unique_together = ('user', 'followed_user', )
+        unique_together = ('user', 'followed_user',)

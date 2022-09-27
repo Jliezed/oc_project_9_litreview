@@ -3,11 +3,10 @@ html {
 }
 
 body {
-  font-family: "Gentium Book Basic", serif, "Roboto Condensed", "Montserrat", "Roboto", "Titillium Web", sans-serif;
+  font-family: "Montserrat", "Roboto", "Titillium Web", sans-serif;
   display: flex;
   flex-direction: column;
   margin: 0;
-  background-color: #f4f1de;
 }
 
 a {
@@ -30,6 +29,7 @@ a {
 .navbar .logo a {
   color: white;
   font-size: xx-large;
+  font-family: "Gentium Book Basic", serif, "Roboto Condensed", "Montserrat", "Roboto", "Titillium Web", sans-serif;
 }
 .navbar .nav-login {
   flex-grow: 2;
@@ -54,6 +54,102 @@ footer div p {
   margin: 0;
 }
 
+/* ----- FORM TEMPLATE: CREATE TICKET & REVIEW PAGE ----- */
+section.form {
+  background-color: #edede9;
+}
+section.form .form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5% auto;
+}
+section.form .form-box form {
+  margin: 3% 0;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+section.form .form-box form .item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+section.form .form-box form .item input[type=text], section.form .form-box form .item input[type=email], section.form .form-box form .item input[type=password] {
+  border-radius: 10px;
+  border: none;
+  background-color: #f8edeb;
+  height: 30px;
+}
+section.form .form-box form .item input:focus, section.form .form-box form .item textarea:focus {
+  border: 1px solid #d85634;
+}
+section.form .form-box form .item textarea {
+  border-radius: 10px;
+  border: none;
+  background-color: #f8edeb;
+}
+section.form .form-box form .item #id_rating {
+  display: flex;
+  justify-content: space-evenly;
+}
+section.form .form-box form input[type=submit] {
+  background-color: #d85634;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+section.form .form-box form input[type=submit]:hover {
+  background-color: black;
+}
+section.form .existing {
+  width: 70%;
+}
+section.form .existing .ticket-info {
+  margin: 5%;
+}
+section.form .existing .ticket-info p {
+  display: flex;
+  text-align: justify;
+}
+
+/* ----- DELETE PAGE ----- */
+.delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  background-color: #f2cc8f;
+  border-radius: 10px;
+  margin: 5% auto;
+}
+.delete form {
+  margin: 3% 0;
+}
+
+/* ----- UPDATE REVIEW PAGE ----- */
+.ticket_of_review {
+  margin: 0 5%;
+}
+.ticket_of_review .content-top {
+  display: flex;
+  flex-direction: row;
+}
+.ticket_of_review .content-top .time-created {
+  flex-basis: 50%;
+  text-align: right;
+}
+.ticket_of_review .content-bottom p {
+  text-align: justify;
+}
+
 /* ----- HOMEPAGE ----- */
 section.home {
   margin: 5% 10%;
@@ -66,47 +162,89 @@ section.home .action-buttons {
 }
 section.home .action-buttons a {
   width: 20%;
-  height: 10%;
-  text-align: center;
-  justify-content: center;
+  height: 30px;
   margin: 0 5%;
-  background-color: #e07a5f;
+  background-color: #d85634;
   border-radius: 15px;
   padding: 2%;
   color: white;
-}
-section.home .feed {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-section.home .feed .post {
-  margin: 1% 0;
-  padding: 3%;
-  border-radius: 10px;
+section.home .action-buttons a:hover {
+  background-color: black;
+}
+section.home .content {
   background-color: #f2cc8f;
+  border-radius: 20px;
+  padding: 2% 5%;
+  margin: 2% 0;
   display: flex;
   flex-direction: column;
 }
-section.home .feed .post .bottom {
-  height: 300px;
-  display: flex;
-}
-section.home .feed .post .bottom img {
-  flex-basis: 70%;
-  object-fit: contain;
-}
-section.home .feed .post .bottom a {
-  flex-basis: 30%;
-  align-self: flex-end;
+section.home .content a {
   width: 20%;
-  height: 10%;
-  text-align: center;
-  justify-content: center;
+  height: 30px;
   margin: 0 5%;
-  background-color: #e07a5f;
+  background-color: #d85634;
   border-radius: 15px;
   padding: 2%;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.home .content a:hover {
+  background-color: black;
+}
+section.home .content .content-top {
+  display: flex;
+}
+section.home .content .content-top p {
+  flex-basis: 50%;
+}
+section.home .content .content-top .time-created {
+  text-align: right;
+}
+section.home .content .content-middle-ticket {
+  display: flex;
+}
+section.home .content .content-middle-ticket p {
+  padding: 0 2% 0 0;
+  text-align: justify;
+}
+section.home .content .content-middle-review {
+  display: flex;
+  flex-direction: column;
+}
+section.home .content .content-middle-review p {
+  padding: 2% 0;
+  text-align: justify;
+}
+section.home .content .content-bottom {
+  margin-top: 2%;
+  display: flex;
+  justify-content: right;
+}
+section.home .content .content-bottom a {
+  margin-right: 0;
+}
+section.home .content .ticket_of_review {
+  border: 1px solid #f4f1de;
+  border-radius: 10px;
+  padding: 2%;
+}
+section.home .content .ticket_of_review .content-top {
+  display: flex;
+  flex-direction: column;
+}
+section.home .content .ticket_of_review .content-bottom {
+  display: flex;
+}
+section.home .content .ticket_of_review .content-bottom p {
+  text-align: justify;
+  padding: 0 2%;
 }
 
 /* ----- LOGIN PAGE ----- */
@@ -225,67 +363,6 @@ section.home .feed .post .bottom a {
   display: none;
 }
 
-/* ----- CREATE TICKET PAGE ----- */
-.form-create-ticket {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  background-color: #f2cc8f;
-  border-radius: 10px;
-  margin: 5% auto;
-}
-.form-create-ticket form {
-  margin: 3% 0;
-}
-.form-create-ticket form .item {
-  display: flex;
-  flex-direction: column;
-}
-
-.update-ticket {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  background-color: #f2cc8f;
-  border-radius: 10px;
-  margin: 5% auto;
-}
-.update-ticket form {
-  margin: 3% 0;
-}
-
-.create-review {
-  margin: 5% 10%;
-}
-.create-review .form-create-ticket {
-  width: 100%;
-}
-
-.update-review {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  background-color: #f2cc8f;
-  border-radius: 10px;
-  margin: 5% auto;
-}
-.update-review form {
-  margin: 3% 0;
-}
-
-.review-existing-ticket {
-  margin: 5% 10%;
-}
-.review-existing-ticket .post {
-  margin: 1% 0;
-  padding: 3%;
-  border-radius: 10px;
-  background-color: #f2cc8f;
-}
-
 section.my-posts {
   margin: 5% 10%;
   display: flex;
@@ -297,10 +374,83 @@ section.my-posts .content {
   padding: 2% 5%;
   margin: 2% 0;
 }
+section.my-posts .content .content-top {
+  display: flex;
+}
+section.my-posts .content .content-top p {
+  flex-basis: 50%;
+}
+section.my-posts .content .content-top .time-created {
+  text-align: right;
+}
+section.my-posts .content .content-middle-ticket, section.my-posts .content .content-middle-review {
+  text-align: justify;
+}
+section.my-posts .content a {
+  width: 20%;
+  height: 30px;
+  margin: 0 5%;
+  background-color: #d85634;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.my-posts .content a:hover {
+  background-color: black;
+}
 section.my-posts .content .ticket_of_review {
   border: 1px solid #f4f1de;
   border-radius: 10px;
   padding: 2%;
+}
+section.my-posts .content .action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2%;
+}
+
+section.follower {
+  margin: 5% 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section.follower .follower-box {
+  width: 70%;
+  border-radius: 10px;
+  margin: 5% auto;
+}
+section.follower .follower-box .search-user {
+  display: flex;
+  flex-direction: column;
+}
+section.follower .follower-box .following {
+  display: flex;
+  flex-direction: column;
+}
+section.follower .follower-box .following .user-item {
+  border: solid 1px black;
+  display: flex;
+}
+section.follower .follower-box .following .user-item p {
+  flex-basis: 60%;
+  margin: 2% 2%;
+}
+section.follower .follower-box .following .user-item a {
+  margin: auto;
+}
+section.follower .follower-box .followed-by {
+  display: flex;
+  flex-direction: column;
+}
+section.follower .follower-box .followed-by div {
+  border: solid 1px black;
+}
+section.follower .follower-box .followed-by div p {
+  margin: 2% 2%;
 }
 
 /*# sourceMappingURL=main.css.map */

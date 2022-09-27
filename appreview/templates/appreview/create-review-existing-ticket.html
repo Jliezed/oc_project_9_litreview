@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	<section class="review-existing-ticket">
-		<div class="post">
+	<section class="form">
+		<div class="form-box existing">
+
 			<div class="ticket-info">
-				<h2>{{ ticket.title }}</h2>
-				<h3>{{ ticket.time_created }}</h3>
+				<p>Vous êtes en train de poster en réponse à:</p>
+				<p>{{ ticket.user }} a demandé une critique</p>
+				<h1>{{ ticket.title }}</h1>
+				<p>{{ ticket.time_created }}</p>
 				<p>
 					{{ ticket.description }}
 					<img src="{{ ticket.image.url }}" alt="">
@@ -14,7 +17,21 @@
 
 			<form action="" method="post" enctype="multipart/form-data">
 				{% csrf_token %}
-				{{ review_form.as_p }}
+				<div class="item">
+					{{ review_form.headline.label_tag }}
+					{{ review_form.headline }}
+					{{ review_form.headline.errors }}
+				</div>
+				<div class="item">
+					{{ review_form.rating.label_tag }}
+					{{ review_form.rating }}
+					{{ review_form.rating.errors }}
+				</div>
+				<div class="item">
+					{{ review_form.body.label_tag }}
+					{{ review_form.body }}
+					{{ review_form.body.errors }}
+				</div>
 				<input type="submit" value="Envoyer">
 			</form>
 		</div>

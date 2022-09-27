@@ -12,4 +12,9 @@ def model_type(value):
 def get_poster_display(context, user):
     if context['user'] == user:
         return "Vous"
-    return user.username
+    return user.username.title()
+
+
+@register.filter
+def to_range(number):
+    return range(1, number+1)

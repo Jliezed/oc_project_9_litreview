@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load appreview_extras %}
+
 {% block content %}
 
 	{% if user.is_authenticated %}
@@ -9,32 +11,59 @@
 				<a href="{% url 'appreview:create_review' %}"> Créer une critique</a>
 			</div>
 			<div class="feed">
-				{% for ticket in tickets %}
-					<div class="post">
-						<div class="top">
-							<p>{{ ticket.user }} a demandé une critique<br/></p>
-							<h2>{{ ticket.title }}<br/></h2>
-							<p>{{ ticket.time_created }}<br/></p>
-							<p>{{ ticket.description }}<br/></p>
-						</div>
-						<div class="bottom">
-							{% if ticket.image %}
-								<img src="{{ ticket.image.url }}">
-							{% endif %}
-							<a href="{% url 'appreview:create_review_ticket' ticket.id %}">Créer une critique</a>
-						</div>
+				{% for post in tickets_and_reviews %}
+					<div class="content">
+
+						{% if post|model_type == "Ticket" %}
+							<div class="content-top">
+								<p>{% get_poster_display post.user %} avez publié un ticket <br/></p>
+								<p class="time-created">{{ post.time_created }}<br/></p>
+							</div>
+							<h1>{{ post.title|title }}<br/></h1>
+							<div class="content-middle-ticket">
+								<p>{{ post.description }}<br/></p>
+								<img src={{ post.image.url }} alt=""><br/>
+							</div>
+							<div class="content-bottom">
+								{% if not post.review_set.all %}
+									<a href="{% url 'appreview:create_review_ticket' post.id %}">Créer une critique</a>
+								{% endif %}
+							</div>
+
+
+						{% elif post|model_type == "Review" %}
+							<div class="content-top">
+								<p>{% get_poster_display post.user %} avez publié une critique <br/></p>
+								<p class="time-created">{{ post.time_created }}<br/></p>
+							</div>
+							<div class="content-middle-review">
+								<h1>{{ post.headline }} -
+									{% for num in post.rating|to_range %}
+										⭑
+									{% endfor %}
+								</h1>
+								<p>{{ post.body|default:"Pas de description" }}<br/></p>
+							</div>
+
+							<div class="ticket_of_review">
+								<div class="content-top">
+									<p>Ticket de {% get_poster_display post.ticket.user %}<br/></p>
+									<h1>{{ post.ticket.title }}<br/></h1>
+								</div>
+								<div class="content-bottom"><img src={{ post.ticket.image.url }} alt="">
+									<p>{{ post.ticket.description }}</p></div>
+
+
+							</div>
+
+
+						{% endif %}
 					</div>
-					<br/>
 				{% endfor %}
 
 
 			</div>
-			{% for review in reviews %}
-				{{ review.headline }} <br/>
-				{{ review.rating }}<br/>
-				{{ review.ticket }}<br/>
-				{{ review.ticket.description }}<br/><br/>
-			{% endfor %}
+
 		</section>
 
 	{% endif %}

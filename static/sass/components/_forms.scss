@@ -1,0 +1,103 @@
+@import "../components/buttons";
+
+@mixin form-template {
+  & input[type=text], input[type=email], input[type=password] {
+    border-radius: 10px;
+    border: none;
+    background-color: $form-input-text;
+    height: 30px;
+  }
+  & input:focus, textarea:focus {
+    border: 1px solid darken($colour-primary, 10%);
+  }
+  & textarea {
+    border-radius: 10px;
+    border: none;
+    background-color: $form-input-text;
+  }
+  & #id_rating {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+
+
+/* ----- FORM TEMPLATE: CREATE TICKET & REVIEW PAGE ----- */
+section.form {
+  background-color: $background-form;
+
+  & .form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    background-color: white;
+    border-radius: 10px;
+    margin: 5% auto;
+
+    & form {
+      margin: 3% 0;
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+
+      & .item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5%;
+        @include form-template;
+      }
+
+      & input[type=submit] {
+        @include input-form-button;
+      }
+    }
+  }
+
+  & .existing {
+    width: 70%;
+
+    & .ticket-info {
+      margin: 5%;
+
+      & p {
+        display: flex;
+        text-align: justify;
+      }
+    }
+  }
+}
+
+
+/* ----- DELETE PAGE ----- */
+.delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  background-color: #f2cc8f;
+  border-radius: 10px;
+  margin: 5% auto;
+
+  & form {
+    margin: 3% 0;
+  }
+}
+
+/* ----- UPDATE REVIEW PAGE ----- */
+.ticket_of_review {
+  margin: 0 5%;
+  & .content-top{
+    display: flex;
+    flex-direction: row;
+    & .time-created {
+      flex-basis: 50%;
+      text-align: right;
+    }
+  }
+  & .content-bottom {
+    & p {
+      text-align: justify;
+    }
+  }
+}

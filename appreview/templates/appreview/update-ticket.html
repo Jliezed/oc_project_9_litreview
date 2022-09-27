@@ -1,14 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-	<section class="update-ticket">
-	<h2>MODIFIER LE TICKET</h2>
-	<form method="post">
-		{{ edit_form.as_p }}
-		{% csrf_token %}
-		<button type="submit">Sauvegarder</button>
+	<section class="form">
+		<div class="form-box">
+			<h1>MODIFIER LE TICKET</h1>
+			<form method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+				<div class="item">
+					{{ edit_form.title.label_tag }}
+					{{ edit_form.title }}
+					{{ edit_form.title.errors }}
+				</div>
+				<div class="item">
+					{{ edit_form.description.label_tag }}
+					{{ edit_form.description }}
+					{{ edit_form.description.errors }}
+				</div>
+				<div class="item">
+					{{ edit_form.image.label_tag }}
+					{{ edit_form.image }}
+					{{ edit_form.image.errors }}
+				</div>
+				<input type="submit" value="Sauvegarder">
 
-	</form>
+			</form>
+		</div>
+
 	</section>
 
 {% endblock %}

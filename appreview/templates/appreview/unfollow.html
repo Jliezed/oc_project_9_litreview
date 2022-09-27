@@ -2,8 +2,8 @@
 
 {% block content %}
 	<section class="delete">
-		<h1>SUPPRIMER LA CRITIQUE</h1>
-		<p>Etes-vous sûr de vouloir supprimer la critique: {{ review.headline }}
+		<h1>SE DESABONNER</h1>
+		<p>Etes-vous sûr de vouloir vous désabonner de {{ user.followed_user }}
 		<form method="post">
 			{% csrf_token %}
 			<button type="submit">Confirmer la suppression</button>

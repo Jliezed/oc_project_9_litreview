@@ -4,7 +4,6 @@ from django.conf.urls.static import static
 
 import appreview.views
 
-
 app_name = "appreview"
 urlpatterns = [
     path("home/", appreview.views.home, name="home"),
@@ -21,14 +20,16 @@ urlpatterns = [
          appreview.views.create_review_existing_ticket, name="create_review_ticket"),
     path("review/<int:review_id>/update/", appreview.views.review_update,
          name="update_review"),
+
     path("review/<int:review_id>/delete/", appreview.views.delete_review,
          name="delete_review"),
     # Other paths
 
     path("followers/", appreview.views.followers, name="followers"),
+    path("followers/<int:user_id>/unfollow", appreview.views.unfollow,
+         name="unfollow"),
 
 ]
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

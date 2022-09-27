@@ -1,22 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	<div>
-		<h1>FOLLOWERS</h1>
-	</div>
+	<section class="follower">
+		<div class="follower-box">
+			<div class="search-user">
+				<h2>Suivre d'autres utilisateurs</h2>
 
-	<div>
-		<h2>Suivre d'autres utilisateurs</h2>
-		<form method="post">
-			{{ form.as_p }}
-			{% csrf_token %}
-			<button type="submit">Confirmer</button>
-		</form>
+				<form method="post">
+					{% csrf_token %}
+					{% for field in form %}
+						{{ field.label_tag }}
+						{{ field }}
+					{% endfor %}
+					<button type="submit">Envoyer</button>
+				</form>
+				<br/>
 
-		<h2>Abonnements</h2>
+{#				<form action="" method="get">#}
+{#					<input name="q" type="text" placeholder="Search...">#}
+{#					<button type="submit">Envoyer</button>#}
+{#				</form>#}
+{#				<p> Results: {{ to_follow }}</p>#}
+{#				<p> user_f: {{ user_f }}</p>#}
 
-		<h2>Abonnés</h2>
-	</div>
+
+			</div>
+			<div class="following">
+				<h2>Abonnements</h2>
+				{% for user in users_following %}
+					<div class="user-item">
+						<p>{{ user.followed_user }}</p>
+						<a href="{% url 'appreview:unfollow' user.id %}">Désabonner</a><br/>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="followed-by">
+				<h2>Abonnés</h2>
+				{% for user in users_followed_by %}
+					<div>
+						<p>{{ user.user }}</p>
+
+					</div>
+
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+
 
 
 {% endblock content %}

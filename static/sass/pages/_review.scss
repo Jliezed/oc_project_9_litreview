@@ -1,9 +1,0 @@
-@import "../components/background";
-
-
-.create-review {
-    @include section;
-    & .form-create-ticket {
-      width: 100%;
-    }
-}

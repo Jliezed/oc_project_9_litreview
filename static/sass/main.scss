@@ -5,16 +5,14 @@
 @import "./layout/navbar";
 @import "layout/footer";
 
+@import "components/forms";
+
 @import "./pages/home";
 @import "./pages/login";
 @import "./pages/reset";
 @import "./pages/signup";
-@import "./pages/create-ticket";
-@import "./pages/update-ticket";
-@import "./pages/review";
-@import "./pages/update-review";
-@import "./pages/review-existing-ticket";
 @import "./pages/my-posts";
+@import "./pages/followers";
 
 
 

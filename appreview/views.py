@@ -4,21 +4,27 @@ from itertools import chain
 # Django Core Import
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 
 # Internal import
-from .forms import TicketForm, ReviewForm, FollowUsersForm, ReviewExistingTicketForm
-from .models import Ticket, Review
+from .forms import TicketForm, ReviewForm, FollowUsersForm
+from .models import Ticket, Review, UserFollows
+from user.models import CustomUser
 
 
 @login_required
 def home(request):
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
+    tickets_and_reviews = sorted(chain(tickets, reviews), key=lambda instance:
+    instance.time_created, reverse=True)
 
     context = {
         "tickets": tickets,
         "reviews": reviews,
+        "tickets_and_reviews": tickets_and_reviews,
     }
     return render(request, "appreview/home.html", context=context)
 
@@ -46,7 +52,7 @@ def create_review_existing_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
 
     if request.method == "POST":
-        review_form = ReviewExistingTicketForm(request.POST)
+        review_form = ReviewForm(request.POST)
         if review_form.is_valid():
             review = review_form.save(commit=False)
             review.ticket_id = ticket.pk
@@ -54,7 +60,7 @@ def create_review_existing_ticket(request, ticket_id):
             review.save()
             return redirect('appreview:home')
     else:
-        review_form = ReviewExistingTicketForm()
+        review_form = ReviewForm()
 
     context = {
         "ticket": ticket,
@@ -94,8 +100,12 @@ def update_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     edit_form = TicketForm(instance=ticket)
     if request.method == "POST":
+        print(request.POST)
+        print(request.COOKIES)
         edit_form = TicketForm(request.POST, instance=ticket)
         if edit_form.is_valid():
+
+
             edit_form.save()
             return redirect("appreview:my_posts")
 
@@ -141,6 +151,7 @@ def review_update(request, review_id):
 
     context = {
         "edit_form": edit_form,
+        "review": review,
     }
     return render(request, "appreview/update-review.html", context=context)
 
@@ -162,9 +173,52 @@ def my_posts(request):
 
 @login_required
 def followers(request):
-    form = FollowUsersForm(instance=request.user)
+    # Get User information
+    users_following = UserFollows.objects.filter(user_id=request.user)
+    users_followed_by = UserFollows.objects.filter(followed_user=request.user)
+
+    # if request.method == "GET":
+    #     query = request.GET.get("q")
+    #
+    #     try:
+    #         to_follow = CustomUser.objects.filter(username__exact=query)
+    #         user_f = CustomUser.objects.filter(username__exact=request.user)
+    #
+    #         add_new_followers = UserFollows.objects.create(
+    #             user=user_f,
+    #             follows=to_follow,
+    #         )
+    #     except ObjectDoesNotExist:
+    #         message = "Username does not exists"
+
+
+    if request.method == "POST":
+        form = FollowUsersForm(request.POST)
+
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.user = request.user
+            user.save()
+            return redirect('appreview:followers')
+    else:
+        form = FollowUsersForm(request.POST)
 
     context = {
         "form": form,
+        "users_following": users_following,
+        "users_followed_by": users_followed_by,
+
     }
     return render(request, "appreview/followers.html", context=context)
+
+
+@login_required
+def unfollow(request, user_id):
+    user = get_object_or_404(UserFollows, id=user_id)
+    if request.method == "POST":
+        user.delete()
+        return redirect("appreview:followers")
+    context = {
+        "user": user,
+    }
+    return render(request, "appreview/unfollow.html", context=context)

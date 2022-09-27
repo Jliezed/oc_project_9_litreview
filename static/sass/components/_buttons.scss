@@ -1,12 +1,33 @@
 
 @mixin a-button {
   width: 20%;
-  height: 10%;
-  text-align: center;
-  justify-content: center;
+  height: 30px;
   margin: 0 5%;
-  background-color: #e07a5f;
+  background-color: darken(#e07a5f, 10%);
   border-radius: 15px;
   padding: 2%;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin a-button-hover {
+  &:hover {
+    background-color: black;
+  }
+}
+
+@mixin input-form-button {
+  background-color: #d85634;
+  border-radius: 15px;
+  padding: 2%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover {
+    background-color: black;
+  }
 }

@@ -1,14 +1,38 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<section class="update-review">
-	<h2>MODIFIER LA CRITIQUE</h2>
-	<form method="post">
-		{{ edit_form.as_p }}
-		{% csrf_token %}
-		<button type="submit">Sauvegarder</button>
+	<section class="form">
+		<div class="form-box">
+			<h1>MODIFIER LA CRITIQUE</h1>
+			<div class="ticket_of_review">
+				<div class="content-top">
+					<p>{{ review.ticket.user }} a demandé une critique</p>
+					<p class="time-created">
+						<small> {{ review.ticket.time_created }}<br/> </small>
+					</p>
+				</div>
+				<h2> {{ review.ticket.title }}<br/></h2>
+				<div class="content-bottom">
+					<p>{{ review.ticket.description }}</p>
+					<img src={{ review.ticket.image.url }} alt=""><br/>
+				</div>
 
-	</form>
+			</div>
+			<hr/>
+			<form method="post">
+				{% csrf_token %}
+				{% for field in edit_form %}
+					<div class="item">
+						{{ field.label_tag }}
+						{{ field }}
+						{{ field.errors }}
+					</div>
+				{% endfor %}
+				<input type="submit" value="Sauvegarder"></input>
+
+			</form>
+		</div>
+
 	</section>
 
 {% endblock %}
