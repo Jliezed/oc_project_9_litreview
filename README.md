@@ -19,7 +19,7 @@
 <br />
 <div align="center">
 
-<h3 align="center">OC - PROJECT N°6 - User Interface for Python web application</h3>
+<h3 align="center">OC - PROJECT N°9 - Web Application Using Django Framework</h3>
 
   <p align="center">
    LITReview is a django web application allowing users to create or asked for books reviews.
