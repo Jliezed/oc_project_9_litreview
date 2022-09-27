@@ -143,11 +143,10 @@
    ```
 
 #### Run the server
-9. Get access to the app
+10. Get access to the app
    ```sh
    python manage.py runserver
    ```
----
 ---
 
 
