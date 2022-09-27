@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from django.db import IntegrityError
 
 # Internal import
 from .forms import TicketForm, ReviewForm, FollowUsersForm
@@ -16,8 +17,13 @@ from user.models import CustomUser
 
 @login_required
 def home(request):
-    tickets = Ticket.objects.all()
-    reviews = Review.objects.all()
+    user_obj = UserFollows.objects.filter(user__exact=request.user)
+    user_following = user_obj.values("followed_user_id")
+
+    tickets = Ticket.objects.filter(
+        Q(user__in=user_following) | Q(user__exact=request.user))
+    reviews = Review.objects.filter(
+        Q(user__in=user_following) | Q(user__exact=request.user))
     tickets_and_reviews = sorted(chain(tickets, reviews), key=lambda instance:
     instance.time_created, reverse=True)
 
@@ -177,29 +183,21 @@ def followers(request):
     users_following = UserFollows.objects.filter(user_id=request.user)
     users_followed_by = UserFollows.objects.filter(followed_user=request.user)
 
-    # if request.method == "GET":
-    #     query = request.GET.get("q")
-    #
-    #     try:
-    #         to_follow = CustomUser.objects.filter(username__exact=query)
-    #         user_f = CustomUser.objects.filter(username__exact=request.user)
-    #
-    #         add_new_followers = UserFollows.objects.create(
-    #             user=user_f,
-    #             follows=to_follow,
-    #         )
-    #     except ObjectDoesNotExist:
-    #         message = "Username does not exists"
-
-
+    error_msg = ""
     if request.method == "POST":
         form = FollowUsersForm(request.POST)
 
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.user = request.user
-            user.save()
-            return redirect('appreview:followers')
+        try:
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.user = request.user
+                user.save()
+                return redirect('appreview:followers')
+        except ObjectDoesNotExist:
+            error_msg = "L'utilisateur n'existe pas"
+        except IntegrityError:
+            error_msg = "Vous êtes déjà abonné à cet utilisateur"
+
     else:
         form = FollowUsersForm(request.POST)
 
@@ -207,6 +205,7 @@ def followers(request):
         "form": form,
         "users_following": users_following,
         "users_followed_by": users_followed_by,
+        "error_msg": error_msg,
 
     }
     return render(request, "appreview/followers.html", context=context)

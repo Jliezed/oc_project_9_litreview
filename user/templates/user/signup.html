@@ -17,7 +17,7 @@
 					<div class="item">
 						{{ field.label_tag }}<br>
 						{{ field }}
-						{% if field.help_text %}
+						{% if field.errors %}
 							<small class="tooltiptext">{{ field.help_text }}</small>
 						{% endif %}
 

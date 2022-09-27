@@ -12,6 +12,18 @@ section.follower {
     & .search-user {
       display: flex;
       flex-direction: column;
+      & form {
+        display: flex;
+        & input[type=text] {
+          flex-basis: 70%;
+          padding: 15px;
+          margin: 0 2% 0 0;
+        }
+        & button {
+          flex-basis: 30%;
+          @include input-form-button;
+        }
+      }
     }
 
     & .following {
@@ -19,7 +31,8 @@ section.follower {
       flex-direction: column;
 
       & .user-item {
-        border: solid 1px black;
+        background-color: #f8f9fa;
+        margin: 1px 0;
         display: flex;
 
         & p {
@@ -29,6 +42,7 @@ section.follower {
 
         & a {
           margin: auto;
+          text-decoration: none;
         }
       }
     }
@@ -38,7 +52,8 @@ section.follower {
       flex-direction: column;
 
       & div {
-        border: solid 1px black;
+        background-color: #f8f9fa;
+        margin: 1px 0;
 
         & p {
           margin: 2% 2%;

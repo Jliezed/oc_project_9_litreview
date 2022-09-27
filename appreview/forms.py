@@ -2,7 +2,8 @@ from django import forms
 from .models import Ticket, Review, UserFollows
 from user.models import CustomUser
 from django.contrib.auth import get_user_model
-
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 
 class TicketForm(forms.ModelForm):
     title = forms.CharField(label="Titre")
@@ -28,8 +29,19 @@ class ReviewForm(forms.ModelForm):
 
 User = get_user_model()
 class FollowUsersForm(forms.ModelForm):
-    followed_user = forms.CharField(widget=forms.TextInput)
+    followed_user = forms.CharField(widget=forms.TextInput(
+        attrs={"placeholder": "Nom d'utilisateur"}))
+
+    # Clean the input received for followed user field
+    def clean_followed_user(self):
+        data = self.cleaned_data["followed_user"]
+        # Transform the string to CustomUser Object
+
+        followed_user = CustomUser.objects.get(username__exact=data)
+        return followed_user
+
 
     class Meta:
         model = UserFollows
         fields = ['followed_user']
+
