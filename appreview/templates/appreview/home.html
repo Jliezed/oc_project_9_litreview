@@ -13,7 +13,6 @@
 			<div class="feed">
 				{% for post in tickets_and_reviews %}
 					<div class="content">
-
 						{% if post|model_type == "Ticket" %}
 							<div class="content-top">
 								<p>
@@ -37,7 +36,6 @@
 									<a href="{% url 'appreview:create_review_ticket' post.id %}">Créer une critique</a>
 								{% endif %}
 							</div>
-
 
 						{% elif post|model_type == "Review" %}
 							<div class="content-top">
@@ -67,20 +65,12 @@
 								</div>
 								<div class="content-bottom"><img src={{ post.ticket.image.url }} alt="">
 									<p>{{ post.ticket.description }}</p></div>
-
-
 							</div>
-
-
 						{% endif %}
 					</div>
 				{% endfor %}
-
-
 			</div>
-
 		</section>
-
 	{% endif %}
 
 {% endblock content %}

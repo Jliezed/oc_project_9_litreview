@@ -5,8 +5,10 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 
+
 class TicketForm(forms.ModelForm):
     title = forms.CharField(label="Titre")
+
     class Meta:
         model = Ticket
         exclude = ('user',)
@@ -27,7 +29,6 @@ class ReviewForm(forms.ModelForm):
         exclude = ('user', 'time_created', 'ticket',)
 
 
-User = get_user_model()
 class FollowUsersForm(forms.ModelForm):
     followed_user = forms.CharField(widget=forms.TextInput(
         attrs={"placeholder": "Nom d'utilisateur"}))
@@ -39,7 +40,6 @@ class FollowUsersForm(forms.ModelForm):
 
         followed_user = CustomUser.objects.get(username__exact=data)
         return followed_user
-
 
     class Meta:
         model = UserFollows

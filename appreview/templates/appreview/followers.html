@@ -15,8 +15,6 @@
 				</form>
 				<small style="color:red">{{ error_msg }}</small>
 				<br/>
-
-
 			</div>
 			<div class="following">
 				<h2>Abonnements</h2>
@@ -32,16 +30,10 @@
 				{% for user in users_followed_by %}
 					<div>
 						<p>{{ user.user|title }}</p>
-
 					</div>
-
 				{% endfor %}
 			</div>
-
 		</div>
-
 	</section>
-
-
 
 {% endblock content %}

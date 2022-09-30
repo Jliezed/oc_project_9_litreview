@@ -41,8 +41,6 @@
 						<div class="content-middle-review">
 							<p>{{ post.body|default:"Pas de description" }}<br/></p>
 						</div>
-
-
 						<div class="ticket_of_review">
 							<p>Ticket de {% get_poster_display post.ticket.user %}<br/></p>
 							<h2>{{ post.ticket.title }}<br/></h2>
@@ -53,7 +51,6 @@
 							<a href="{% url 'appreview:update_review' post.id %}">MODIFIER</a>
 							<a href="{% url 'appreview:delete_review' post.id %}">SUPPRIMER</a>
 						</div>
-
 					{% endif %}
 				</div>
 			{% endfor %}

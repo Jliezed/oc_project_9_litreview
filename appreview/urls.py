@@ -24,7 +24,6 @@ urlpatterns = [
     path("review/<int:review_id>/delete/", appreview.views.delete_review,
          name="delete_review"),
     # Other paths
-
     path("followers/", appreview.views.followers, name="followers"),
     path("followers/<int:user_id>/unfollow", appreview.views.unfollow,
          name="unfollow"),

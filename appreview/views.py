@@ -4,7 +4,6 @@ from itertools import chain
 # Django Core Import
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from django.db import IntegrityError
@@ -12,7 +11,6 @@ from django.db import IntegrityError
 # Internal import
 from .forms import TicketForm, ReviewForm, FollowUsersForm
 from .models import Ticket, Review, UserFollows
-from user.models import CustomUser
 
 
 @login_required
