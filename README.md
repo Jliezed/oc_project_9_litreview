@@ -40,15 +40,9 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -104,7 +98,7 @@
 #### Create and activate a virtual environment
 2. Go to your project directory
    ```sh
-   cd litreview
+   cd oc_project_9_litreview
    ```
 3. Install venv library (if not yet in your computer)
    ```sh
@@ -136,19 +130,17 @@
       ALLOWED_HOSTS=['127.0.0.1']
       ```
 
-#### Create a superuser
-9. Configure a superuser access
-   ```sh
-   python manage.py createsuper
-   ```
-
 #### Run the server
-10. Get access to the app
+9. Access to the app: http://127.0.0.1:8001/accounts/login/
    ```sh
    python manage.py runserver
    ```
+10. Access to the Admin: http://127.0.0.1:8001/admin/login/?next=/admin/
+   ```sh
+   User: toto
+   Password: secret
+   ```
 ---
-
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
