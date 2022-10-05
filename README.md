@@ -131,11 +131,11 @@
       ```
 
 #### Run the server
-9. Access to the app: http://127.0.0.1:8001/accounts/login/
+9. Access to the app: http://127.0.0.1:8000/accounts/login/
    ```sh
    python manage.py runserver
    ```
-10. Access to the Admin: http://127.0.0.1:8001/admin/login/?next=/admin/
+10. Access to the Admin: http://127.0.0.1:8000/admin/login/?next=/admin/
    ```sh
    User: toto
    Password: secret
