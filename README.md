@@ -8,10 +8,10 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
+
+[![oc][oc-project-shield]][oc-project-url]
+[![django][django-shield]][django-url]
+[![crud][crud-shield]][crud-url]
 
 
 
@@ -19,34 +19,18 @@
 <br />
 <div align="center">
 
-<h3 align="center">OC - PROJECT N°9 - Web Application Using Django Framework</h3>
+<h1 align="center">OC - PROJECT N°9 - Web Application Using Django Framework</h1>
 
   <p align="center">
    LITReview is a django web application allowing users to create or asked for books reviews.
     <br />
-    <a href="https://github.com/Jliezed/oc_project_9_litreview">View Demo</a>
-    ·
-    <a href="https://github.com/Jliezed/oc_project_9_litreview/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Jliezed/oc_project_9_litreview/issues">Request Feature</a>
-  </p>
+    </p>
 </div>
 
+<img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80">
+<a href="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"><small>By Susan Q Yin</small></a>
 
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
 
 
 
@@ -149,15 +133,6 @@
 
 
 
-<!-- CONTACT -->
-## Contact
-
-Jliezed
-
-Project Link: [https://github.com/Jliezed/oc_project_9_litreview](https://github.com/Jliezed/oc_project_9_litreview)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 
 
 
@@ -165,16 +140,12 @@ Project Link: [https://github.com/Jliezed/oc_project_9_litreview](https://github
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Jliezed/oc_project_9_litreview.svg?style=for-the-badge
-[contributors-url]: https://github.com/Jliezed/oc_project_9_litreview/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Jliezed/oc_project_9_litreview.svg?style=for-the-badge
-[forks-url]: https://github.com/Jliezed/oc_project_9_litreview/network/members
-[stars-shield]: https://img.shields.io/github/stars/Jliezed/oc_project_9_litreview.svg?style=for-the-badge
-[stars-url]: https://github.com/Jliezed/oc_project_9_litreview/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Jliezed/oc_project_9_litreview.svg?style=for-the-badge
-[issues-url]: https://github.com/Jliezed/oc_project_9_litreview/issues
-[license-shield]: https://img.shields.io/github/license/Jliezed/oc_project_9_litreview.svg?style=for-the-badge
-[license-url]: https://github.com/Jliezed/oc_project_9_litreview/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
+[oc-project-shield]: https://img.shields.io/badge/OPENCLASSROOMS-PROJECT-blueviolet?style=for-the-badge
+[oc-project-url]: https://openclassrooms.com/fr/paths/518-developpeur-dapplication-python
+
+[django-shield]: https://img.shields.io/badge/Django-blue?style=for-the-badge
+[django-url]: https://www.djangoproject.com/
+
+[crud-shield]: https://img.shields.io/badge/-CRUD-blue?style=for-the-badge
+[crud-url]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
+
