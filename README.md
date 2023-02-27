@@ -10,6 +10,7 @@
 -->
 
 [![oc][oc-project-shield]][oc-project-url]
+[![web][web-dev-shield]][web-dev-url]
 [![django][django-shield]][django-url]
 [![crud][crud-shield]][crud-url]
 
@@ -149,3 +150,5 @@
 [crud-shield]: https://img.shields.io/badge/-CRUD-blue?style=for-the-badge
 [crud-url]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete
 
+[web-dev-shield]: https://img.shields.io/badge/-Web%20Development-blue?style=for-the-badge
+[web-dev-url]: https://en.wikipedia.org/wiki/Web_development
